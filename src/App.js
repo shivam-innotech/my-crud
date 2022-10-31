@@ -1,23 +1,30 @@
-import logo from './logo.svg';
+import React from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
+import Store from './redux/store';
+import { Provider } from 'react-redux';
+import Home from './components/Home';
+import Forms from './components/forms'
+import UpdateDetails from './components/updateDetails';
+import Users from './components/users';
+import UserPoll from './components/userPoll';
+
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Provider store={Store}>
+        <BrowserRouter>
+          <Routes>
+            <Route excat path='/' element={<Home />} />
+            <Route excat path='/form' element={<Forms />} />
+            <Route excat path='/user' element={<Users />} />
+            <Route excat path='/userPoll' element={<UserPoll />} />
+            <Route excat path='/edit/:id' element={<UpdateDetails />} />
+          </Routes>
+        </BrowserRouter>
+      </Provider>
     </div>
   );
 }

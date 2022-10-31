@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { GetApiAction, DeleteApiAction } from '../redux/action/action';
 import { Link } from 'react-router-dom';
 
-const Home = () => {
+const UserPoll = () => {
     const dispatch = useDispatch();
     const responseData = useSelector((state) => state.reducer.details);
     useEffect(() => {
@@ -25,10 +25,9 @@ const Home = () => {
                                 &nbsp;{item.option}
                             </h6>
                         )}
-                        <Link to={`/edit/${data._id}`}>
-                            <button type="button" className="btn btn-warning">Edit</button>
+                        <Link >
+                            <button type="button" className="btn btn-warning">Submit Vote</button>
                         </Link>
-                        <button type="button" className="btn btn-danger" onClick={() => dispatch(DeleteApiAction(data._id))}>Delete</button>
                     </div>
                 </div>
 
@@ -37,16 +36,10 @@ const Home = () => {
     }) : null;
     return (
         <div className='container'>
-            <h1>Admin Poll Page</h1><br />
-            <Link to='/form'>
-                <button type="button" className="btn btn-success">Add New Poll</button>
-            </Link>
-            <Link to='/user'>
-                <button type="button" className="btn btn-info">List Users</button>
-            </Link><br /><br />
+            <br /><h1>Poll Page</h1><br />
             <h1>{result}</h1>
         </div>
     )
 }
 
-export default Home
+export default UserPoll
