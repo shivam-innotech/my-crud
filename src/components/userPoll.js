@@ -26,7 +26,7 @@ const UserPoll = () => {
                             </h6>
                         )}
                         <Link >
-                            <button type="button" className="btn btn-warning">Submit Vote</button>
+                            <button type="button" className="btn btn-outline-info">Submit Vote</button>
                         </Link>
                     </div>
                 </div>
