@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { PostApiAction, UpdateApiAction } from '../redux/action/action';
+import { UpdateApiAction } from '../redux/action/action';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import getDetailsByHooks from '../hooks/getDetailsByHooks';

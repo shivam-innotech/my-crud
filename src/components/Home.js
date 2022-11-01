@@ -1,16 +1,19 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { GetApiAction, DeleteApiAction } from '../redux/action/action';
+import { GetApiAction, DeleteApiAction, DeleteOptionApiAction } from '../redux/action/action';
 import { Link } from 'react-router-dom';
 
 const Home = () => {
     const dispatch = useDispatch();
     const responseData = useSelector((state) => state.reducer.details);
+    const deleteOption = useSelector((state) => state.reducer.deleteOption);
+    // console.log('-*-*-*-', deleteOption);
     useEffect(() => {
         dispatch(GetApiAction());
     }, [dispatch]);
 
     const result = responseData ? responseData.map((data, index) => {
+        // console.log('DATA----', data['options']);
         return (
             <div key={index}>
                 <div className="card">
@@ -26,20 +29,22 @@ const Home = () => {
                         {data.options.map((item, index) =>
                             <h6 key={index}>
                                 <span >
-                                    <Link>X</Link> &nbsp;
-                                    <Link>Edit</Link> &nbsp;
+                                    <span
+                                        onClick={() => dispatch(DeleteOptionApiAction(data._id))}>
+                                        X
+                                    </span> &nbsp;
                                     <input className='form-check-input' type="radio" name={data['_id']} />
-                                </span>
-                                &nbsp;{item.option}
+                                </span> &nbsp;
+                                {item.option}
                             </h6>
                         )}
-                        <Link>
+                        <Link to={`/forms1/${data._id}`}>
                             <button type="button" className="btn btn-outline-warning">Add New Options</button>
                         </Link>
                         <button type="button" className="btn btn-outline-danger" onClick={() => dispatch(DeleteApiAction(data._id))}>Delete Poll</button>
                     </div>
                 </div>
-            </div>
+            </div >
         )
     }) : null;
     return (
@@ -51,6 +56,9 @@ const Home = () => {
             <Link to='/user'>
                 <button type="button" className="btn btn-outline-info">List Users</button>
             </Link><br /><br />
+            {/* <Link to='/'>
+                <button>User Page</button>
+            </Link><br /><br /> */}
             <h1>{result}</h1>
         </div>
     )
