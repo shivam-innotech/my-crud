@@ -10,7 +10,6 @@ export const Forms = () => {
     const [option3, setOption3] = useState('');
     const [option4, setOption4] = useState('');
 
-
     const dispatch = useDispatch();
     // const isResponse = useSelector((state) => state.reducer.isResponse);
     const titleHandler = (e) => {

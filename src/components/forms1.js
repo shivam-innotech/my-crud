@@ -10,18 +10,11 @@ export const Forms1 = () => {
     const [title, setTitle] = useState('');
 
     const dispatch = useDispatch();
-    // const isResponse = useSelector((state) => state.reducer.isResponse);
     const [detailsById] = getDetailsByHooks(id);
-    // console.log('detailsById is=>', detailsById);
     useEffect(() => {
         const data = () => {
             if (detailsById.data) {
                 setTitle(detailsById.data.data['title']);
-                // console.log('++++++++++', detailsById.data.data['options'][0]['option']);
-                // setOption1(detailsById.data.data['options'][0]['option']);
-                // setOption2(detailsById.data.data['options'][1]['option']);
-                // setOption3(detailsById.data.data['options'][2]['option']);
-                // setOption4(detailsById.data.data['options'][3]['option']);
             }
         };
         data();
@@ -40,9 +33,6 @@ export const Forms1 = () => {
         console.log('****', finalData);
     };
 
-    // if (isResponse) {
-    //     alert('Add New Poll Sucessfully');
-    // }
     return (
         <div className='container add'>
             <h1>Add New Option</h1>
