@@ -22,10 +22,15 @@ const Delete = ({ id }) => {
         setShow(false);
         dispatch(GetApiAction())
     }
+
     const handleShow = () => setShow(true);
     return (
         <>
-            <FontAwesomeIcon onClick={handleShow} icon={faTrash} />
+            <FontAwesomeIcon
+                className='trash'
+                onClick={handleShow}
+                icon={faTrash}
+            />
 
             <Modal
                 show={show}
@@ -34,7 +39,9 @@ const Delete = ({ id }) => {
                 keyboard={false}
             >
                 <Modal.Header closeButton>
-                    <Modal.Title>Delete Poll</Modal.Title>
+                    <Modal.Title>
+                        Delete Poll
+                    </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     Are you sure you want to delete? Poll

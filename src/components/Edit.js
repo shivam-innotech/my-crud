@@ -6,7 +6,10 @@ import { Link } from 'react-router-dom'
 const Edit = ({ id }) => {
     return (
         <Link to={`/edit/${id}`}>
-            <FontAwesomeIcon icon={faPen} />
+            <FontAwesomeIcon
+                className='pen'
+                icon={faPen}
+            />
         </Link>
     )
 }
